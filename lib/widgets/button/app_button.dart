@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:quran_pak_app/animations/bottom_animation.dart';
 import 'package:quran_pak_app/configs/app_dimensions.dart';
-
-import '../../animations/bottom_animation.dart';
-import '../../configs/app_typography.dart';
+import 'package:quran_pak_app/configs/app_typography.dart';
 
 class AppButton extends StatelessWidget {
   final String title;
@@ -20,13 +19,13 @@ class AppButton extends StatelessWidget {
           borderRadius: BorderRadius.circular(10),
         ),
         onPressed: onPressed,
+        color: const Color(0xffee8f8b),
         child: WidgetAnimator(
           child: Text(
             title,
             style: AppText.b1,
           ),
         ),
-        color: const Color(0xffee8f8b),
       ),
     );
   }

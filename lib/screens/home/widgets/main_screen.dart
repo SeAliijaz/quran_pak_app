@@ -1,7 +1,17 @@
-part of '../home_screen.dart';
+import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:quran_pak_app/app_routes.dart';
+import 'package:quran_pak_app/configs/app.dart';
+import 'package:quran_pak_app/configs/space.dart';
+import 'package:quran_pak_app/providers/app_provider.dart';
+import 'package:quran_pak_app/screens/home/widgets/bottom_ayah.dart';
+import 'package:quran_pak_app/widgets/app/app_name.dart';
+import 'package:quran_pak_app/widgets/button/app_button.dart';
+import 'package:quran_pak_app/widgets/calligraphy.dart';
+import 'package:quran_pak_app/widgets/quran_rail.dart';
 
-class _MainScreen extends StatelessWidget {
-  const _MainScreen({Key? key}) : super(key: key);
+class MainScreen extends StatelessWidget {
+  const MainScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -43,7 +53,7 @@ class _MainScreen extends StatelessWidget {
                 ],
               ),
             ),
-            const _AyahBottom(),
+            const AyahBottom(),
           ],
         ),
       ),

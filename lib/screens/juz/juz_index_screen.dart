@@ -1,21 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:iconsax/iconsax.dart';
 import 'package:provider/provider.dart';
-
-import '../../animations/bottom_animation.dart';
-import '../../configs/app.dart';
-import '../../configs/app_dimensions.dart';
-import '../../configs/app_theme.dart';
-import '../../configs/app_typography.dart';
-import '../../configs/space.dart';
-import '../../cubits/juz/cubit.dart';
-import '../../providers/app_provider.dart';
-import '../../utils/assets.dart';
-import '../../utils/juz.dart';
-import '../../widgets/app/title.dart';
-import '../../widgets/button/app_back_button.dart';
-import '../../widgets/custom_image.dart';
-import '../../widgets/flare.dart';
-import '../surah/surah_index_screen.dart';
+import 'package:quran_pak_app/animations/bottom_animation.dart';
+import 'package:quran_pak_app/configs/app.dart';
+import 'package:quran_pak_app/configs/app_dimensions.dart';
+import 'package:quran_pak_app/configs/app_theme.dart';
+import 'package:quran_pak_app/configs/app_typography.dart';
+import 'package:quran_pak_app/configs/space.dart';
+import 'package:quran_pak_app/cubits/juz/cubit.dart';
+import 'package:quran_pak_app/providers/app_provider.dart';
+import 'package:quran_pak_app/screens/surah/surah_index_screen.dart';
+import 'package:quran_pak_app/utils/assets.dart';
+import 'package:quran_pak_app/utils/juz.dart';
+import 'package:quran_pak_app/widgets/app/title.dart';
+import 'package:quran_pak_app/widgets/button/app_back_button.dart';
+import 'package:quran_pak_app/widgets/custom_image.dart';
+import 'package:quran_pak_app/widgets/flare.dart';
 
 class JuzIndexScreen extends StatefulWidget {
   const JuzIndexScreen({Key? key}) : super(key: key);
@@ -77,12 +77,12 @@ class _JuzIndexScreenState extends State<JuzIndexScreen> {
                 },
                 decoration: InputDecoration(
                   contentPadding: Space.h,
-                  hintText: 'Search Juz Number...',
+                  hintText: 'Search Juz Number here...',
                   hintStyle: AppText.b2!.copyWith(
                     color: AppTheme.c!.textSub2,
                   ),
                   prefixIcon: Icon(
-                    Icons.search,
+                    Iconsax.search_normal,
                     color: AppTheme.c!.textSub2!,
                   ),
                   enabledBorder: OutlineInputBorder(

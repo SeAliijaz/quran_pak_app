@@ -7,24 +7,14 @@ const fontFamily = 'Poppins';
 final themeLight = ThemeData(
   fontFamily: fontFamily,
   brightness: Brightness.light,
-  backgroundColor: Colors.white,
   dividerColor: Colors.white60,
   splashColor: Colors.transparent,
   primaryColor: const Color(0xffee8f8b),
-  scaffoldBackgroundColor: Colors.white,
-  iconTheme: IconThemeData(color: Colors.black),
-  appBarTheme: AppBarTheme(backgroundColor: Colors.white, elevation: 0.0),
-  pageTransitionsTheme: const PageTransitionsTheme(
-    builders: {
-      TargetPlatform.android: ZoomPageTransitionsBuilder(),
-      TargetPlatform.iOS: ZoomPageTransitionsBuilder(),
-    },
-  ),
-  colorScheme: ThemeData.light().colorScheme.copyWith(
+  scaffoldBackgroundColor: Colors.white, colorScheme: ThemeData.light().colorScheme.copyWith(
         brightness: Brightness.light,
         primary: AppTheme.light.primary,
         background: AppTheme.light.background,
-      ),
+      ).copyWith(background: Colors.white),
 );
 
 final themeDark = ThemeData(
@@ -33,19 +23,9 @@ final themeDark = ThemeData(
   brightness: Brightness.dark,
   dividerColor: Colors.black12,
   splashColor: Colors.transparent,
-  scaffoldBackgroundColor: Colors.grey[850],
-  iconTheme: IconThemeData(color: Colors.white),
-  appBarTheme: AppBarTheme(backgroundColor: Colors.grey[850], elevation: 0.0),
-  backgroundColor: const Color(0xFF212121),
-  pageTransitionsTheme: const PageTransitionsTheme(
-    builders: {
-      TargetPlatform.android: ZoomPageTransitionsBuilder(),
-      TargetPlatform.iOS: ZoomPageTransitionsBuilder(),
-    },
-  ),
-  colorScheme: ThemeData.light().colorScheme.copyWith(
+  scaffoldBackgroundColor: Colors.grey[850], colorScheme: ThemeData.light().colorScheme.copyWith(
         brightness: Brightness.dark,
         primary: AppTheme.light.primary,
         background: AppTheme.light.background,
-      ),
+      ).copyWith(background: const Color(0xFF212121)),
 );

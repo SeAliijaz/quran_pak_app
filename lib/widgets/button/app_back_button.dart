@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:quran_pak_app/configs/app_dimensions.dart';
 
 class AppBackButton extends StatelessWidget {
   const AppBackButton({Key? key}) : super(key: key);
@@ -8,7 +9,13 @@ class AppBackButton extends StatelessWidget {
     return Positioned(
       top: MediaQuery.of(context).size.height * 0.02,
       left: MediaQuery.of(context).size.width * 0.02,
-      child: const BackButton(),
+      child: IconButton(
+        onPressed: () => Navigator.pop(context),
+        icon: Icon(
+          Icons.arrow_left,
+          size: AppDimensions.normalize(12),
+        ),
+      ),
     );
   }
 }

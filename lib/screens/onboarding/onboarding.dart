@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:quran_pak_app/app_routes.dart';
+import 'package:quran_pak_app/configs/app.dart';
+import 'package:quran_pak_app/configs/app_dimensions.dart';
+import 'package:quran_pak_app/configs/app_theme.dart';
+import 'package:quran_pak_app/configs/app_typography.dart';
+import 'package:quran_pak_app/configs/space.dart';
+import 'package:quran_pak_app/providers/onboarding_provider.dart';
 import 'package:quran_pak_app/utils/assets.dart';
-
-import '../../Routes/app_routes.dart';
-import '../../configs/app.dart';
-import '../../configs/app_dimensions.dart';
-import '../../configs/app_theme.dart';
-import '../../configs/app_typography.dart';
-import '../../configs/space.dart';
-import '../../providers/onboarding_provider.dart';
 
 part 'widgets/indicator.dart';
 part 'widgets/onboarding_page.dart';

@@ -2,7 +2,6 @@ import 'dart:convert';
 
 import 'package:flutter/foundation.dart';
 import 'package:hive/hive.dart';
-
 import 'package:quran_pak_app/models/ayah/ayah.dart';
 
 part 'chapter.g.dart';

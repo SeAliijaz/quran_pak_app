@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-
-import '../../../configs/app_theme.dart';
-import '../../../providers/app_provider.dart';
+import 'package:quran_pak_app/configs/app_theme.dart';
+import 'package:quran_pak_app/providers/app_provider.dart';
 
 class AboutUsCustomButton extends StatelessWidget {
   final String? text;
@@ -29,6 +28,7 @@ class AboutUsCustomButton extends StatelessWidget {
               AppTheme.c!.accent,
             ),
           ),
+          onPressed: onPressed,
           child: Row(
             mainAxisSize: MainAxisSize.min,
             children: <Widget>[
@@ -45,7 +45,6 @@ class AboutUsCustomButton extends StatelessWidget {
               )
             ],
           ),
-          onPressed: onPressed,
         ),
       ),
     );

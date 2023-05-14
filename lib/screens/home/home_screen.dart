@@ -1,25 +1,19 @@
 import 'dart:io';
 import 'dart:async';
 import 'dart:math' as math;
-import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-import '../../Routes/app_routes.dart';
-import '../../configs/app.dart';
-import '../../configs/app_dimensions.dart';
-import '../../configs/app_theme.dart';
-import '../../configs/app_typography.dart';
-import '../../configs/space.dart';
-import '../../providers/app_provider.dart';
-import '../../utils/drawer.dart';
-import '../../widgets/app/app_name.dart';
-import '../../widgets/app/app_version.dart';
-import '../../widgets/app/drawer_app_name.dart';
-import '../../widgets/button/app_button.dart';
-import '../../widgets/calligraphy.dart';
-import '../../widgets/quran_rail.dart';
 
-part 'widgets/main_screen.dart';
-part 'widgets/bottom_ayah.dart';
+import 'package:flutter/material.dart';
+import 'package:iconsax/iconsax.dart';
+import 'package:provider/provider.dart';
+import 'package:quran_pak_app/configs/app.dart';
+import 'package:quran_pak_app/configs/app_dimensions.dart';
+import 'package:quran_pak_app/configs/app_theme.dart';
+import 'package:quran_pak_app/configs/space.dart';
+import 'package:quran_pak_app/providers/app_provider.dart';
+import 'package:quran_pak_app/screens/home/widgets/main_screen.dart';
+import 'package:quran_pak_app/utils/drawer.dart';
+import 'package:quran_pak_app/widgets/app/app_version.dart';
+import 'package:quran_pak_app/widgets/app/drawer_app_name.dart';
 part 'widgets/custom_drawer.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -66,12 +60,12 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
   }
 
   void _onDragEnd(DragEndDetails details) {
-    double _kMinFlingVelocity = 365.0;
+    double kMinFlingVelocity = 365.0;
 
     if (animationController.isDismissed || animationController.isCompleted) {
       return;
     }
-    if (details.velocity.pixelsPerSecond.dx.abs() >= _kMinFlingVelocity) {
+    if (details.velocity.pixelsPerSecond.dx.abs() >= kMinFlingVelocity) {
       double visualVelocity = details.velocity.pixelsPerSecond.dx /
           MediaQuery.of(context).size.width;
 
@@ -93,17 +87,8 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
               "Exit Application",
               style: TextStyle(fontWeight: FontWeight.bold),
             ),
-            content: const Text("Are You Sure You Want To Exit?"),
+            content: const Text("Are You Sure?"),
             actions: <Widget>[
-              TextButton(
-                child: const Text(
-                  "No",
-                  style: TextStyle(color: Colors.blue),
-                ),
-                onPressed: () {
-                  Navigator.of(context).pop();
-                },
-              ),
               TextButton(
                 child: const Text(
                   "Yes",
@@ -111,6 +96,15 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                 ),
                 onPressed: () {
                   exit(0);
+                },
+              ),
+              TextButton(
+                child: const Text(
+                  "No",
+                  style: TextStyle(color: Colors.blue),
+                ),
+                onPressed: () {
+                  Navigator.of(context).pop();
                 },
               ),
             ],
@@ -136,7 +130,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
           animation: animationController,
           builder: (context, _) {
             return Material(
-              color: appProvider.isDark ? Colors.grey[900] : Colors.white70,
+              color: appProvider.isDark ? Colors.grey[900] : Colors.grey[200],
               child: Stack(
                 children: <Widget>[
                   Transform.translate(
@@ -159,17 +153,18 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                         ..setEntry(3, 2, 0.001)
                         ..rotateY(-math.pi / 2 * animationController.value),
                       alignment: Alignment.centerLeft,
-                      child: const _MainScreen(),
+                      child: const MainScreen(),
                     ),
                   ),
                   Positioned(
                     top: 4.0 + MediaQuery.of(context).padding.top,
-                    left: width * 0.01 +
+                    left: width * 0.02 +
                         animationController.value * widget.maxSlide,
                     child: IconButton(
                       icon: Icon(
-                        Icons.menu,
+                        Icons.menu_outlined,
                         size: AppDimensions.normalize(11),
+                        color: Colors.grey,
                       ),
                       onPressed: toggle,
                       color: appProvider.isDark ? Colors.white : Colors.black,

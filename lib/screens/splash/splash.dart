@@ -1,18 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:provider/provider.dart';
+import 'package:quran_pak_app/animations/bottom_animation.dart';
+import 'package:quran_pak_app/app_routes.dart';
+import 'package:quran_pak_app/configs/app.dart';
+import 'package:quran_pak_app/configs/app_dimensions.dart';
+import 'package:quran_pak_app/configs/space.dart';
+import 'package:quran_pak_app/cubits/bookmarks/cubit.dart';
+import 'package:quran_pak_app/cubits/chapter/cubit.dart';
+import 'package:quran_pak_app/cubits/juz/cubit.dart';
+import 'package:quran_pak_app/providers/app_provider.dart';
+import 'package:quran_pak_app/utils/assets.dart';
 import 'package:shimmer/shimmer.dart';
-
-import '../../animations/bottom_animation.dart';
-import '../../Routes/app_routes.dart';
-import '../../configs/app.dart';
-import '../../configs/app_dimensions.dart';
-import '../../configs/space.dart';
-import '../../cubits/bookmarks/cubit.dart';
-import '../../cubits/chapter/cubit.dart';
-import '../../cubits/juz/cubit.dart';
-import '../../providers/app_provider.dart';
-import '../../utils/assets.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key}) : super(key: key);

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-
-import '../../configs/app_typography.dart';
+import 'package:quran_pak_app/configs/app_typography.dart';
 
 class AppName extends StatelessWidget {
   const AppName({Key? key}) : super(key: key);

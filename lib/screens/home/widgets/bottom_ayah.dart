@@ -1,7 +1,11 @@
-part of '../home_screen.dart';
+import 'package:flutter/material.dart';
+import 'package:quran_pak_app/configs/app.dart';
+import 'package:quran_pak_app/configs/app_theme.dart';
+import 'package:quran_pak_app/configs/app_typography.dart';
+import 'package:quran_pak_app/configs/space.dart';
 
-class _AyahBottom extends StatelessWidget {
-  const _AyahBottom({Key? key}) : super(key: key);
+class AyahBottom extends StatelessWidget {
+  const AyahBottom({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

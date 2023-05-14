@@ -40,7 +40,7 @@ class ChapterDataProvider {
 
       if (chapter == null) return null;
 
-      final List<Chapter?>? chapters = List.from(chapter);
+      final List<Chapter?> chapters = List.from(chapter);
 
       return chapters;
     } catch (e) {

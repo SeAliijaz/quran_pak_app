@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import '../../configs/app_theme.dart';
-import '../../providers/app_provider.dart';
-import '../../utils/assets.dart';
+import 'package:quran_pak_app/providers/app_provider.dart';
+import 'package:quran_pak_app/utils/assets.dart';
 
 class DrawerAppName extends StatelessWidget {
   const DrawerAppName({Key? key}) : super(key: key);
@@ -10,6 +9,7 @@ class DrawerAppName extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final appProvider = Provider.of<AppProvider>(context);
+
     double height = MediaQuery.of(context).size.height;
 
     return Row(
@@ -18,21 +18,6 @@ class DrawerAppName extends StatelessWidget {
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            Transform.scale(
-              scale: 1.2,
-              child: Switch(
-                activeColor: Colors.white,
-                value: appProvider.isDark,
-                activeTrackColor: AppTheme.c!.accent,
-                onChanged: (value) {
-                  if (value) {
-                    appProvider.setTheme(ThemeMode.dark);
-                  } else {
-                    appProvider.setTheme(ThemeMode.light);
-                  }
-                },
-              ),
-            ),
             Text(
               "\nThe",
               style: TextStyle(

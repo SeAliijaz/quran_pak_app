@@ -1,19 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:provider/provider.dart';
+import 'package:quran_pak_app/configs/app.dart';
+import 'package:quran_pak_app/configs/app_dimensions.dart';
+import 'package:quran_pak_app/configs/app_theme.dart';
+import 'package:quran_pak_app/configs/app_typography.dart';
+import 'package:quran_pak_app/cubits/bookmarks/cubit.dart';
+import 'package:quran_pak_app/providers/app_provider.dart';
+import 'package:quran_pak_app/screens/surah/surah_index_screen.dart';
+import 'package:quran_pak_app/utils/assets.dart';
+import 'package:quran_pak_app/widgets/app/title.dart';
+import 'package:quran_pak_app/widgets/button/app_back_button.dart';
+import 'package:quran_pak_app/widgets/custom_image.dart';
 
-import '../../configs/app.dart';
-import '../../configs/app_dimensions.dart';
-import '../../configs/app_theme.dart';
-import '../../configs/app_typography.dart';
-import '../../cubits/bookmarks/cubit.dart';
-import '../../providers/app_provider.dart';
-import '../../utils/assets.dart';
-import '../../widgets/app/title.dart';
-import '../../widgets/button/app_back_button.dart';
-import '../../widgets/custom_image.dart';
 import '../../widgets/loader/loading_shimmer.dart';
-import '../surah/surah_index_screen.dart';
 
 class BookmarksScreen extends StatefulWidget {
   const BookmarksScreen({Key? key}) : super(key: key);

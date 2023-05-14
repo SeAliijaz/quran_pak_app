@@ -1,10 +1,11 @@
 class Links {
   static const String api = 'https://api.alquran.cloud';
-  static const String github = 'https://github.com/SeAliijaz/Quran-Pak-App';
+  static const String github = 'https://github.com/mhmzdev/the-holy-quran-app';
 
   static const Map<String, dynamic> dev = {
-    'name': 'Muhammad Ali',
-    'email': 'Se.Aliijaz@gmail.com',
-    'github': '@SeAliijaz',
+    'name': 'Muhammad Hamza',
+    'email': 'hamza.6.shakeel@gmail.com',
+    'github': '@mhmzdev',
+    'website': 'https://mhmz.dev',
   };
 }
