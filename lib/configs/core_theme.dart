@@ -12,6 +12,8 @@ final themeLight = ThemeData(
   splashColor: Colors.transparent,
   primaryColor: const Color(0xffee8f8b),
   scaffoldBackgroundColor: Colors.white,
+  iconTheme: IconThemeData(color: Colors.black),
+  appBarTheme: AppBarTheme(backgroundColor: Colors.white, elevation: 0.0),
   pageTransitionsTheme: const PageTransitionsTheme(
     builders: {
       TargetPlatform.android: ZoomPageTransitionsBuilder(),
@@ -32,6 +34,8 @@ final themeDark = ThemeData(
   dividerColor: Colors.black12,
   splashColor: Colors.transparent,
   scaffoldBackgroundColor: Colors.grey[850],
+  iconTheme: IconThemeData(color: Colors.white),
+  appBarTheme: AppBarTheme(backgroundColor: Colors.grey[850], elevation: 0.0),
   backgroundColor: const Color(0xFF212121),
   pageTransitionsTheme: const PageTransitionsTheme(
     builders: {

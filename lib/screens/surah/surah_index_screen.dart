@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:provider/provider.dart';
-
+import 'package:quran_pak_app/widgets/app/app_name.dart';
 import '../../animations/bottom_animation.dart';
 import '../../configs/app.dart';
 import '../../configs/app_dimensions.dart';
@@ -15,11 +15,8 @@ import '../../models/juz/juz.dart';
 import '../../providers/app_provider.dart';
 import '../../utils/assets.dart';
 import '../../utils/juz.dart';
-import '../../widgets/app/title.dart';
-import '../../widgets/button/app_back_button.dart';
 import '../../widgets/custom_image.dart';
 import '../../widgets/flare.dart';
-
 part '../page/page_screen.dart';
 part 'widgets/surah_app_bar.dart';
 part 'widgets/surah_information.dart';
@@ -57,17 +54,111 @@ class _SurahIndexScreenState extends State<SurahIndexScreen> {
       onTap: () => FocusScope.of(context).unfocus(),
       child: Scaffold(
         backgroundColor: appProvider.isDark ? Colors.grey[850] : Colors.white,
+
+        ///AppBar
+        appBar: AppBar(
+          backgroundColor: Theme.of(context).appBarTheme.backgroundColor,
+          iconTheme: IconThemeData(color: Theme.of(context).iconTheme.color),
+          title: Text(
+            "Surah Index",
+            style: TextStyle(
+              color: appProvider.isDark ? Colors.white : Colors.black,
+            ),
+          ),
+          centerTitle: true,
+
+          ///PreferredSize
+          ///Search Bar is Added in AppBar
+          bottom: PreferredSize(
+            preferredSize: const Size.fromHeight(65.5),
+            child: chapters!.isNotEmpty
+                ? Container(
+                    padding: const EdgeInsets.all(10.0),
+                    child: TextFormField(
+                      onChanged: (value) {
+                        if (value.isEmpty) {
+                          setState(() {
+                            searchedChapters = [];
+                          });
+                        }
+                        if (value.isNotEmpty) {
+                          setState(() {
+                            var lowerCaseQuery = value.toLowerCase();
+
+                            searchedChapters = chapters!.where((chapter) {
+                              final chapterName = chapter!.englishName!
+                                  .toLowerCase()
+                                  .contains(lowerCaseQuery);
+                              return chapterName;
+                            }).toList(growable: false)
+                              ..sort(
+                                (a, b) => a!.englishName!
+                                    .toLowerCase()
+                                    .indexOf(lowerCaseQuery)
+                                    .compareTo(
+                                      b!.englishName!
+                                          .toLowerCase()
+                                          .indexOf(lowerCaseQuery),
+                                    ),
+                              );
+                          });
+                        }
+                      },
+                      decoration: InputDecoration(
+                        contentPadding: Space.h,
+                        hintText: 'Search Surah here...',
+                        hintStyle: AppText.b2!.copyWith(
+                          color: AppTheme.c!.textSub2,
+                        ),
+                        prefixIcon: Icon(
+                          Icons.search,
+                          color: AppTheme.c!.textSub2!,
+                        ),
+                        enabledBorder: OutlineInputBorder(
+                          borderSide: BorderSide(
+                            color: AppTheme.c!.textSub2!,
+                          ),
+                          borderRadius: BorderRadius.circular(10.0),
+                        ),
+                        focusedBorder: OutlineInputBorder(
+                          borderSide: BorderSide(
+                            color: AppTheme.c!.textSub2!,
+                          ),
+                          borderRadius: BorderRadius.circular(10.0),
+                        ),
+                      ),
+                    ),
+                  )
+
+                ///else condition of search bar
+                : Text(
+                    "Something Error",
+                    style: TextStyle(
+                      color: appProvider.isDark ? Colors.white : Colors.black,
+                    ),
+                  ),
+          ),
+        ),
+
+        ///BODY
         body: SafeArea(
           child: Stack(
             children: <Widget>[
-              CustomImage(
-                opacity: 0.3,
-                height: height * 0.17,
-                imagePath: StaticAssets.kaba,
-              ),
-              const AppBackButton(),
-              const CustomTitle(
-                title: 'Surah Index',
+              ///Added Container
+              ///App Name
+              ///Kabah Image
+              Container(
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    const AppName(),
+                    CustomImage(
+                      opacity: 0.3,
+                      height: height * 0.17,
+                      imagePath: StaticAssets.kaba,
+                    ),
+                  ],
+                ),
               ),
               if (chapters!.isEmpty)
                 Center(
@@ -111,69 +202,6 @@ class _SurahIndexScreenState extends State<SurahIndexScreen> {
                         ],
                       );
                     },
-                  ),
-                ),
-              if (chapters!.isNotEmpty)
-                Container(
-                  height: AppDimensions.normalize(20),
-                  margin: EdgeInsets.only(
-                    top: MediaQuery.of(context).size.height * 0.2,
-                    left: AppDimensions.normalize(5),
-                    right: AppDimensions.normalize(5),
-                  ),
-                  child: TextFormField(
-                    onChanged: (value) {
-                      if (value.isEmpty) {
-                        setState(() {
-                          searchedChapters = [];
-                        });
-                      }
-                      if (value.isNotEmpty) {
-                        setState(() {
-                          var lowerCaseQuery = value.toLowerCase();
-
-                          searchedChapters = chapters!.where((chapter) {
-                            final chapterName = chapter!.englishName!
-                                .toLowerCase()
-                                .contains(lowerCaseQuery);
-                            return chapterName;
-                          }).toList(growable: false)
-                            ..sort(
-                              (a, b) => a!.englishName!
-                                  .toLowerCase()
-                                  .indexOf(lowerCaseQuery)
-                                  .compareTo(
-                                    b!.englishName!
-                                        .toLowerCase()
-                                        .indexOf(lowerCaseQuery),
-                                  ),
-                            );
-                        });
-                      }
-                    },
-                    decoration: InputDecoration(
-                      contentPadding: Space.h,
-                      hintText: 'Search Surah here...',
-                      hintStyle: AppText.b2!.copyWith(
-                        color: AppTheme.c!.textSub2,
-                      ),
-                      prefixIcon: Icon(
-                        Icons.search,
-                        color: AppTheme.c!.textSub2!,
-                      ),
-                      enabledBorder: OutlineInputBorder(
-                        borderSide: BorderSide(
-                          color: AppTheme.c!.textSub2!,
-                        ),
-                        borderRadius: BorderRadius.circular(10.0),
-                      ),
-                      focusedBorder: OutlineInputBorder(
-                        borderSide: BorderSide(
-                          color: AppTheme.c!.textSub2!,
-                        ),
-                        borderRadius: BorderRadius.circular(10.0),
-                      ),
-                    ),
                   ),
                 ),
               if (chapters!.isNotEmpty)
@@ -261,3 +289,74 @@ class _SurahIndexScreenState extends State<SurahIndexScreen> {
     );
   }
 }
+/*
+--------------------------------------------------------------------------------         
+|----->> Search Bar in Surah Index <<-----|                                    |
+--------------------------------------------------------------------------------         
+              if (chapters!.isNotEmpty)
+                 Container(
+                   height: AppDimensions.normalize(20),
+                   margin: EdgeInsets.only(
+                     top: MediaQuery.of(context).size.height * 0.25,
+                     left: AppDimensions.normalize(5),
+                     right: AppDimensions.normalize(5),
+                   ),
+                   child: TextFormField(
+                     onChanged: (value) {
+                       if (value.isEmpty) {
+                         setState(() {
+                           searchedChapters = [];
+                         });
+                       }
+                       if (value.isNotEmpty) {
+                         setState(() {
+                           var lowerCaseQuery = value.toLowerCase();
+
+                           searchedChapters = chapters!.where((chapter) {
+                             final chapterName = chapter!.englishName!
+                                 .toLowerCase()
+                                 .contains(lowerCaseQuery);
+                             return chapterName;
+                           }).toList(growable: false)
+                             ..sort(
+                               (a, b) => a!.englishName!
+                                   .toLowerCase()
+                                   .indexOf(lowerCaseQuery)
+                                   .compareTo(
+                                     b!.englishName!
+                                         .toLowerCase()
+                                         .indexOf(lowerCaseQuery),
+                                   ),
+                             );
+                         });
+                       }
+                     },
+                     decoration: InputDecoration(
+                       contentPadding: Space.h,
+                       hintText: 'Search Surah here...',
+                       hintStyle: AppText.b2!.copyWith(
+                         color: AppTheme.c!.textSub2,
+                       ),
+                       prefixIcon: Icon(
+                         Icons.search,
+                         color: AppTheme.c!.textSub2!,
+                       ),
+                       enabledBorder: OutlineInputBorder(
+                         borderSide: BorderSide(
+                           color: AppTheme.c!.textSub2!,
+                         ),
+                         borderRadius: BorderRadius.circular(10.0),
+                       ),
+                       focusedBorder: OutlineInputBorder(
+                         borderSide: BorderSide(
+                           color: AppTheme.c!.textSub2!,
+                         ),
+                         borderRadius: BorderRadius.circular(10.0),
+                       ),
+                     ),
+                   ),
+                 ),
+--------------------------------------------------------------------------------         
+|----->> Search Bar in Surah Index <<-----|                                    |
+--------------------------------------------------------------------------------
+*/
