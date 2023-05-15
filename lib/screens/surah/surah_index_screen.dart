@@ -15,7 +15,6 @@ import 'package:quran_pak_app/models/juz/juz.dart';
 import 'package:quran_pak_app/providers/app_provider.dart';
 import 'package:quran_pak_app/utils/juz.dart';
 import 'package:quran_pak_app/widgets/flare.dart';
-
 import '../../utils/assets.dart';
 import '../../widgets/app/title.dart';
 import '../../widgets/button/app_back_button.dart';
@@ -59,7 +58,8 @@ class _SurahIndexScreenState extends State<SurahIndexScreen> {
         backgroundColor: appProvider.isDark ? Colors.grey[850] : Colors.white,
         body: SafeArea(
           child: Stack(
-            children: <Widget>[
+            children: [
+              ///Image And App Name And Backbutton
               CustomImage(
                 opacity: 0.3,
                 height: height * 0.17,
@@ -69,6 +69,8 @@ class _SurahIndexScreenState extends State<SurahIndexScreen> {
               const CustomTitle(
                 title: 'Surah Index',
               ),
+
+              /// Handling Empty Condition
               if (chapters!.isEmpty)
                 Center(
                   child: BlocBuilder<ChapterCubit, ChapterState>(
@@ -113,6 +115,8 @@ class _SurahIndexScreenState extends State<SurahIndexScreen> {
                     },
                   ),
                 ),
+
+              ///TextField
               if (chapters!.isNotEmpty)
                 Container(
                   height: AppDimensions.normalize(20),
@@ -176,6 +180,8 @@ class _SurahIndexScreenState extends State<SurahIndexScreen> {
                     ),
                   ),
                 ),
+
+              ///Showing Data
               if (chapters!.isNotEmpty)
                 Container(
                   margin: EdgeInsets.only(
@@ -207,6 +213,8 @@ class _SurahIndexScreenState extends State<SurahIndexScreen> {
                           },
                         ),
                 ),
+
+              ///Flare setting
               if (appProvider.isDark) ...[
                 Flare(
                   color: const Color(0xfff9e9b8),

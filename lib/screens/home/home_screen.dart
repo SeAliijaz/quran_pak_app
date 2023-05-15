@@ -1,7 +1,6 @@
 import 'dart:io';
 import 'dart:async';
 import 'dart:math' as math;
-
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:provider/provider.dart';
@@ -91,20 +90,20 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
             actions: <Widget>[
               TextButton(
                 child: const Text(
-                  "Yes",
-                  style: TextStyle(color: Colors.red),
-                ),
-                onPressed: () {
-                  exit(0);
-                },
-              ),
-              TextButton(
-                child: const Text(
                   "No",
                   style: TextStyle(color: Colors.blue),
                 ),
                 onPressed: () {
                   Navigator.of(context).pop();
+                },
+              ),
+              TextButton(
+                child: const Text(
+                  "Yes",
+                  style: TextStyle(color: Colors.red),
+                ),
+                onPressed: () {
+                  exit(0);
                 },
               ),
             ],

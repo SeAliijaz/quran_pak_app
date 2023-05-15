@@ -66,7 +66,7 @@ class _PageScreenState extends State<PageScreen> {
               leading: IconButton(
                 onPressed: () => Navigator.pop(context),
                 icon: Icon(
-                  Iconsax.arrow_left,
+                  Icons.arrow_back_ios_new_outlined,
                   color: appProvider.isDark ? Colors.white : Colors.black,
                   size: AppDimensions.normalize(12),
                 ),

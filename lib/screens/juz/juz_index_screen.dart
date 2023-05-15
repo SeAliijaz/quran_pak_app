@@ -151,6 +151,8 @@ class _JuzIndexScreenState extends State<JuzIndexScreen> {
                         ),
                       ),
                     )
+
+                  ///Showing Juz
                   : GridView.builder(
                       itemCount: JuzUtils.juzNames.length,
                       gridDelegate:
@@ -211,6 +213,8 @@ class _JuzIndexScreenState extends State<JuzIndexScreen> {
                       },
                     ),
             ),
+
+            ///Image And App Name And Backbutton
             const AppBackButton(),
             CustomImage(
               opacity: 0.3,
@@ -220,6 +224,8 @@ class _JuzIndexScreenState extends State<JuzIndexScreen> {
             const CustomTitle(
               title: "Juzz Index",
             ),
+
+            ///Flare Setting
             if (appProvider.isDark) ...[
               Flare(
                 color: const Color(0xfff9e9b8),
