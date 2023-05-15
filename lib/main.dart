@@ -84,7 +84,7 @@ class MaterialChild extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'They Holy Qur\'an',
+      title: 'The Holy Qur\'an',
       debugShowCheckedModeBanner: false,
       theme: theme.themeLight,
       darkTheme: theme.themeDark,
