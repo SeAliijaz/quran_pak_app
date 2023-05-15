@@ -9,8 +9,6 @@ import 'package:quran_pak_app/widgets/button/app_back_button.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class AboutUsScreen extends StatefulWidget {
-  const AboutUsScreen({super.key});
-
   @override
   State<AboutUsScreen> createState() => _AboutUsScreenState();
 }

@@ -99,7 +99,7 @@ class MaterialChild extends StatelessWidget {
         AppRoutes.juz: (context) => const JuzIndexScreen(),
         AppRoutes.splash: (context) => const SplashScreen(),
         AppRoutes.surah: (context) => const SurahIndexScreen(),
-        AppRoutes.aboutUs: (context) => const AboutUsScreen(),
+        AppRoutes.aboutUs: (context) => AboutUsScreen(),
         AppRoutes.bookmarks: (context) => const BookmarksScreen(),
         AppRoutes.onboarding: (context) => const OnboardingScreen(),
         AppRoutes.home: (context) => HomeScreen(
