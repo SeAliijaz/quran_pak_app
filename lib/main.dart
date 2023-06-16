@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -27,7 +28,7 @@ Future<void> main() async {
   setPathUrlStrategy();
   WidgetsFlutterBinding.ensureInitialized();
 
-// hive
+  /// hive
   await Hive.initFlutter();
 
   Hive.registerAdapter<Juz>(JuzAdapter());
@@ -55,6 +56,7 @@ class _MyAppState extends State<MyApp> {
       DeviceOrientation.portraitDown,
     ]);
 
+    ///Multiple Providers
     return MultiProvider(
       providers: [
         BlocProvider(create: (_) => JuzCubit()),
@@ -65,47 +67,59 @@ class _MyAppState extends State<MyApp> {
       ],
       child: Consumer<AppProvider>(
         builder: ((context, value, child) {
-          return MaterialChild(
-            value: value,
-          );
+          /*
+          A constant that is true if the application was compiled in release mode.
+          More specifically, this is a constant that is true if the application was compiled in Dart with the '-Ddart.vm.product=true' flag.
+          Since this is a const value, it can be used to indicate to the compiler that a particular block of code will not be executed in release mode, and hence can be removed.
+          Generally it is better to use [kDebugMode] or assert to gate code, since using [kReleaseMode] will introduce differences between release and profile builds, which makes performance testing less representative.
+          */
+          return kReleaseMode
+              ? MaterialApp(
+                  title: 'The Holy Qur\'an',
+                  debugShowCheckedModeBanner: false,
+                  theme: theme.themeLight,
+                  darkTheme: theme.themeDark,
+                  themeMode: value.themeMode,
+                  home: Builder(
+                    builder: (context) => HomeScreen(
+                      maxSlide: MediaQuery.of(context).size.width * 0.835,
+                    ),
+                  ),
+                  initialRoute: AppRoutes.splash,
+                  routes: <String, WidgetBuilder>{
+                    AppRoutes.juz: (context) => const JuzIndexScreen(),
+                    AppRoutes.splash: (context) => const SplashScreen(),
+                    AppRoutes.surah: (context) => const SurahIndexScreen(),
+                    AppRoutes.aboutUs: (context) => AboutUsScreen(),
+                    AppRoutes.bookmarks: (context) => const BookmarksScreen(),
+                    AppRoutes.onboarding: (context) => const OnboardingScreen(),
+                    AppRoutes.home: (context) => HomeScreen(
+                          maxSlide: MediaQuery.of(context).size.width * 0.835,
+                        ),
+                  },
+                )
+              /*
+              A constant that is true if the application was compiled in debug mode.
+              More specifically, this is a constant that is true if the application was not compiled with '-Ddart.vm.product=true' and '-Ddart.vm.profile=true'.
+              Since this is a const value, it can be used to indicate to the compiler that a particular block of code will not be executed in debug mode, and hence can be removed.
+              An alternative strategy is to use asserts, as in:
+              assert(() {
+              // ...debug-only code here...
+              return true;
+              }());
+              */
+
+              /// --->>> DEBUG MODE RESULT <<<--- \\\
+              : Text(
+                  "Your Application is in Debug Mode",
+                  style: TextStyle(
+                    fontSize: 25.0,
+                    fontWeight: FontWeight.bold,
+                    fontStyle: FontStyle.italic,
+                  ),
+                );
         }),
       ),
-    );
-  }
-}
-
-class MaterialChild extends StatelessWidget {
-  final AppProvider? value;
-  const MaterialChild({
-    Key? key,
-    this.value,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'The Holy Qur\'an',
-      debugShowCheckedModeBanner: false,
-      theme: theme.themeLight,
-      darkTheme: theme.themeDark,
-      themeMode: value!.themeMode,
-      home: Builder(
-        builder: (context) => HomeScreen(
-          maxSlide: MediaQuery.of(context).size.width * 0.835,
-        ),
-      ),
-      initialRoute: AppRoutes.splash,
-      routes: <String, WidgetBuilder>{
-        AppRoutes.juz: (context) => const JuzIndexScreen(),
-        AppRoutes.splash: (context) => const SplashScreen(),
-        AppRoutes.surah: (context) => const SurahIndexScreen(),
-        AppRoutes.aboutUs: (context) => AboutUsScreen(),
-        AppRoutes.bookmarks: (context) => const BookmarksScreen(),
-        AppRoutes.onboarding: (context) => const OnboardingScreen(),
-        AppRoutes.home: (context) => HomeScreen(
-              maxSlide: MediaQuery.of(context).size.width * 0.835,
-            ),
-      },
     );
   }
 }
